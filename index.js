@@ -2,7 +2,7 @@ const express = require("express");
 
 const cors = require("cors");
 
-const postsRouter = require("./posts-router");
+const postsRouter = require("./crud-ops");
 
 const server = express();
 
