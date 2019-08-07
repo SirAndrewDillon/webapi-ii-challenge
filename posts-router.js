@@ -2,6 +2,9 @@ const router = require("express").Router();
 
 const Posts = require("./data/db");
 
+
+
+
 router.post("/", (req, res) => {
     const body = req.body;
 
@@ -46,6 +49,7 @@ router.post("/:id/comments", (req, res) => {
                         });
                 } else {
                     res
+                        //Server does not understand the request
                         .status(400)
                         .json({ errorMessage: "Please provide text for the comment." });
                 }
@@ -123,7 +127,7 @@ router.get("/:id/comments", (req, res) => {
             }
         })
         .catch(() => {
-            // if there's a database error getting post
+            // if there's a error getting post
             res.status(500).json({
                 error: "The comments information could not be retrieved."
             });
@@ -156,3 +160,39 @@ router.delete("/:id", (req, res) => {
             res.status(500).json({ error: "The post could not be retrieved." });
         });
 });
+
+router.put("/:id", (req, res) => {
+    const id = req.params.id;
+    const newBody = req.body;
+
+    if (newBody.title && newBody.contents) {
+        Posts.findById(id)
+            .then(result => {
+                if (result.length > 0) {
+                    Posts.update(id, newBody).then(() => {
+                        Posts.find().then(result => {
+                            res.status(200).json(result);
+                        });
+                    });
+                } else {
+                    // The post does not exist. Send a 404.
+                    res.status(404).json({
+                        message: "The post with the specified ID does not exist."
+                    });
+                }
+            })
+            .catch(() => {
+                // If there is an error modifying the post send a 500.
+                res.status(500).json({
+                    error: "The post information could not be modified."
+                });
+            });
+    } else {
+        res.status(400).json({
+            //Server does not understand the request
+            errorMessage: "Please provide title and contents for the post."
+        });
+    }
+});
+
+module.exports = router;

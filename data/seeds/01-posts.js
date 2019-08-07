@@ -1,50 +1,50 @@
-exports.seed = function(knex, Promise) {
+exports.seed = function (knex, Promise) {
   return knex('posts')
     .truncate()
-    .then(function() {
+    .then(function () {
       return knex('posts').insert([
         {
           title:
-            'I wish the ring had never come to me. I wish none of this had happened.',
+            'A lot of people are afraid of heights. Not me, I’m afraid of widths.',
           contents: 'Guess who said this',
         },
         {
-          title: 'I think we should get off the road. Get off the road! Quick!',
-          contents: 'Guess who said this',
-        },
-        {
-          title:
-            "I made a promise, Mr Frodo. A promise. \"Don't you leave him Samwise Gamgee.\" And I don't mean to. I don't mean to.",
+          title: 'Bills travel through the mail at twice the speed of checks.',
           contents: 'Guess who said this',
         },
         {
           title:
-            " N-nothing important. That is, I heard a great deal about a ring, a Dark Lord, and something about the end of the world, but... Please, Mr. Gandalf, sir, don't hurt me. Don't turn me into anything... unnatural.",
+            "Eagles may soar, but weasels don’t get sucked into jet engines.",
           contents: 'Guess who said this',
         },
         {
           title:
-            'You need people of intelligence on this sort of mission...quest...thing.',
+            " I almost broke both my arms trying to hold open a revolving door for a woman.",
           contents: 'Guess who said this',
         },
         {
           title:
-            'All you have to do is decide what to do with the time that is given to you.',
+            'I stayed up one night playing poker with Tarot cards. I got a full house and four people died.',
           contents: 'Guess who said this',
         },
         {
           title:
-            'Do not be so quick to deal out death and judgement. Even the very wise do not see all ends.',
+            'I was Caesarean born. Can’t really tell, although whenever I leave a house I go through the window.',
           contents: 'Guess who said this',
         },
         {
           title:
-            ' Fool of a Took! Throw yourself in next time and rid us of your stupidity!',
+            'I went to a place to eat. It said breakfast at any time. So I ordered French Toast during the Renaissance.',
           contents: 'Guess who said this',
         },
         {
           title:
-            'I will be dead before I see the ring in the hands of an elf! Never trust an elf!',
+            ' I spilled spot remover on my dog and now he’s gone!',
+          contents: 'Guess who said this',
+        },
+        {
+          title:
+            'My girlfriend does her nails with white-out. When shes asleep, I go over there and write misspelled words on them!',
           contents: 'Guess who said this',
         },
       ]);
